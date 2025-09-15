@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Receita{
+  id        Int      @id @default(autoincrement())
+  nome     String
+  tempoPreparo Int
+  custoAproximado Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ingredientes Ingrediente[]
+}
+
+model Ingrediente{
+    id Int          @id @default(autoincrement())
+    nome String
+    receitaId Int
+    receita   Receita @relation(fields: [receitaId], references: [id], onDelete: Cascade)
+    @@index([receitaId])
+}
