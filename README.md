@@ -1,54 +1,100 @@
-# CRUD Receitas - API REST
+# CRUD Receitas - Sistema Completo
 
 Sistema de gerenciamento de receitas culinárias com ingredientes.
 
 ## Tecnologias
 
+### Backend
 - Node.js
 - TypeScript
 - Express.js
 - Prisma ORM
 - SQLite
 
+### Frontend
+- React 18
+- TypeScript
+- Vite
+- Axios
+- CSS3
+
 ## Estrutura do Projeto
 
 ```
-backend/
-├── src/
-│   ├── controllers/
-│   ├── routes/
-│   └── server.ts
-├── prisma/
-│   └── schema.prisma
-└── package.json
+crud-prova-escola-ti/
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── routes/
+│   │   └── server.ts
+│   ├── prisma/
+│   │   └── schema.prisma
+│   └── package.json
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   ├── services/
+    │   ├── types/
+    │   └── App.tsx
+    └── package.json
 ```
 
 ## Instalação e Configuração
 
-1. Clone o repositório:
+### 1. Clone o repositório:
 ```bash
 git clone https://github.com/natanaelbalbo/crud-prova-escola-ti.git
 cd crud-prova-escola-ti
 ```
 
-2. Instale as dependências:
+### 2. Configuração do Backend
+
 ```bash
 cd backend
 npm install
 ```
 
-3. Configure o banco de dados:
+Crie o arquivo `.env` na pasta backend:
+```env
+DATABASE_URL="file:./dev.db"
+```
+
+Configure o banco de dados:
 ```bash
 npx prisma migrate dev --name init
 npx prisma generate
 ```
 
-4. Inicie o servidor:
+Inicie o servidor backend:
 ```bash
 npm run dev
 ```
 
-O servidor rodará em: `http://localhost:3001`
+O servidor backend rodará em: `http://localhost:3001`
+
+### 3. Configuração do Frontend
+
+Abra um novo terminal e execute:
+
+```bash
+cd frontend
+npm install
+```
+
+Inicie o servidor frontend:
+```bash
+npm run dev
+```
+
+O servidor frontend rodará em: `http://localhost:5173`
+
+### 4. Acesso à Aplicação
+
+Após iniciar ambos os servidores:
+- Frontend: `http://localhost:5173`
+- Backend API: `http://localhost:3001`
+
+Certifique-se de que ambos estão rodando para o funcionamento completo da aplicação.
 
 ## Endpoints da API
 
@@ -121,8 +167,32 @@ Sem body - apenas DELETE com ingredienteId na URL
 
 ## Scripts Disponíveis
 
+### Backend
 ```bash
 npm run dev     # Inicia servidor em desenvolvimento
 npm run build   # Compila TypeScript
 npm start       # Inicia servidor em produção
 ```
+
+### Frontend
+```bash
+npm run dev     # Inicia servidor de desenvolvimento
+npm run build   # Compila para produção
+npm run preview # Visualiza build de produção
+```
+
+## Funcionalidades
+
+### Interface Web
+- Listar todas as receitas
+- Criar nova receita com ingredientes
+- Editar receita existente
+- Excluir receita
+- Adicionar ingredientes individualmente
+- Remover ingredientes específicos
+- Interface responsiva e intuitiva
+
+### API REST
+- CRUD completo de receitas
+- Gerenciamento de ingredientes
+- Relacionamento 1:N entre receitas e ingredientes
