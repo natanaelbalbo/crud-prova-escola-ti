@@ -83,5 +83,37 @@ export const receitaController = {
     } catch (error) {
       res.status(500).json({ error: 'Erro ao deletar receita' });
     }
+  },
+
+  async addIngrediente(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const { nome } = req.body;
+
+      const ingrediente = await prisma.ingrediente.create({
+        data: {
+          nome,
+          receitaId: Number(id)
+        }
+      });
+
+      res.status(201).json(ingrediente);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao adicionar ingrediente' });
+    }
+  },
+
+  async removeIngrediente(req: Request, res: Response) {
+    try {
+      const { ingredienteId } = req.params;
+
+      await prisma.ingrediente.delete({
+        where: { id: Number(ingredienteId) }
+      });
+
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao remover ingrediente' });
+    }
   }
 };
