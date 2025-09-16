@@ -54,7 +54,7 @@ export const receitaController = {
           tempoPreparo,
           custoAproximado,
           ingredientes: {
-            deleteMany: {}, // Remove todos os ingredientes antigos
+            deleteMany: {},
             create: ingredientes.map((ingrediente: string) => ({
               nome: ingrediente
             }))

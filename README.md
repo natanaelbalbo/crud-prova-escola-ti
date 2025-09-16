@@ -61,6 +61,13 @@ O servidor rodará em: `http://localhost:3001`
 | PUT | `/api/receitas/:id` | Atualiza receita por ID |
 | DELETE | `/api/receitas/:id` | Deleta receita por ID |
 
+### Ingredientes
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST | `/api/receitas/:id/ingredientes` | Adiciona ingrediente à receita |
+| DELETE | `/api/ingredientes/:ingredienteId` | Remove ingrediente específico |
+
 ## Exemplos de Uso
 
 ### Criar Receita (POST)
@@ -81,6 +88,19 @@ O servidor rodará em: `http://localhost:3001`
   "custoAproximado": 25.00,
   "ingredientes": ["Farinha", "Chocolate belga", "Ovos", "Açúcar"]
 }
+```
+
+### Adicionar Ingrediente (POST)
+```json
+{
+  "nome": "Sal"
+}
+```
+
+### Remover Ingrediente (DELETE)
+```
+DELETE /api/ingredientes/3
+Sem body - apenas DELETE com ingredienteId na URL
 ```
 
 ## Modelo de Dados
